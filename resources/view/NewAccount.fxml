@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="824.0" style="-fx-background-color: ;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.NewAccountController">
+   <children>
+      <StackPane layoutX="10.0" layoutY="13.0" prefHeight="75.0" prefWidth="800.0" style="-fx-background-color: #1C0C4F;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <Label prefHeight="53.0" prefWidth="236.0" text="New Account" textFill="#f5f4f4">
+               <font>
+                  <Font name="Georgia" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <TextField fx:id="accountName" layoutX="133.0" layoutY="225.0" promptText="ex: Chase Savings">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="openingBalance" layoutX="136.0" layoutY="466.0" prefHeight="40.0" prefWidth="246.0" promptText="0.00">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+      <Label layoutX="129.0" layoutY="183.0" text="Account Name*">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="131.0" layoutY="424.0" text="Opening Balance*">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="openingDate" layoutX="135.0" layoutY="349.0" prefHeight="40.0" prefWidth="246.0" />
+      <Label layoutX="135.0" layoutY="313.0" text="Date*">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="295.0" layoutY="619.0" mnemonicParsing="false" onAction="#handleSaveOp" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #72BB53;" text="Save">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="143.0" layoutY="620.0" mnemonicParsing="false" onAction="#handleCancelOp" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: red;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
