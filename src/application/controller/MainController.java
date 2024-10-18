@@ -39,4 +39,8 @@ public class MainController {
 		}
 	}
 	
+	@FXML public void goHomeOp() {
+		showStartUpOp();
+	}
+	
 }
