@@ -10,12 +10,17 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
+		
 		try {
-			HBox root = (HBox)FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+			HBox mainBox = (HBox)FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
+			Scene scene = new Scene(mainBox);
+			scene.getStylesheets().add(getClass().getClassLoader().getResource("css/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			// keep a reference of the mainBox inside the shared object
+			Shared shared = Shared.getInstance();
+			shared.setMainBox(mainBox);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
