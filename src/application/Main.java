@@ -12,7 +12,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		
 		try {
-			HBox mainBox = (HBox)FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
+			HBox mainBox = (HBox)FXMLLoader.load(getClass().getClassLoader().getResource("view/Main.fxml"));
 			Scene scene = new Scene(mainBox);
 			scene.getStylesheets().add(getClass().getClassLoader().getResource("css/application.css").toExternalForm());
 			primaryStage.setScene(scene);
