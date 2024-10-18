@@ -1,1 +1,13 @@
 /bin/
+
+# Eclipse specific files and directories
+.classpath
+.project
+.settings/
+build.fxbuild
+
+# MacOS specific files
+.DS_Store
+
+# Database file
+*.db
