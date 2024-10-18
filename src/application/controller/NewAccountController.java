@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -30,31 +31,45 @@ public class NewAccountController {
 		double opBal = convertOpeningBalanceToDouble(opBalStr);
 		
 		if(isEmptyFields(accName, opBalStr, opDate)) {
-			flashMessage(AlertType.ERROR, "Empty Fields", "", "Please fill in all fields.");
+			flashMessage(AlertType.ERROR, "Empty Fields", "Please fill in all fields.");
 			return;
 		}
 		
 		if(opBal <= 0.0) {
-			flashMessage(AlertType.ERROR, "Invalid Balance Value", "", "Please enter a valid monetary balance.");
+			flashMessage(AlertType.ERROR, "Invalid Balance Value", "Please enter a valid monetary balance.");
 			return;
 		}
 		
-
-		flashMessage(AlertType.INFORMATION, "Success", "", "New Account Added.");
+		flashMessage(AlertType.INFORMATION, "Success", "New Account Added.");
+		clearInputs();
+		
 		System.out.println("Input: " + accName + ", " + opBal + ", " + opDate);
 	}
 	
-	// TODO: If users cancels the 'cancel' operation, don't change the state
 	@FXML public void handleCancelOp() {
-		accountName.clear();
-		openingBalance.clear();
-		flashMessage(AlertType.CONFIRMATION, "Warning", "", "Are you sure you want to cancel this?");
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+	    alert.setTitle("Warning");
+        alert.setHeaderText("");
+        alert.setContentText("Are you sure you want to cancel this?");
+  
+	    alert.showAndWait().ifPresent(res -> {
+	    	// user confirms to cancel
+	    	if(res == ButtonType.OK) {
+	    		clearInputs();
+	    	} 
+	    });
 	}
 	
-	private void flashMessage(AlertType type, String title, String header, String content ) {
+	private void clearInputs() {
+		accountName.clear();
+		openingBalance.clear();
+		openingDate.setValue(LocalDate.now());
+	}
+	
+	private void flashMessage(AlertType type, String title, String content ) {
 		Alert alert = new Alert(type);
 	    alert.setTitle(title);
-        alert.setHeaderText(header);
+        alert.setHeaderText("");
         alert.setContentText(content);
   
 	    alert.show();	
