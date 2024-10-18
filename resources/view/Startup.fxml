@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -7,9 +8,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="824.0" style="-fx-background-color: ;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.StartupController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.StartupController">
    <children>
-      <Button layoutX="125.0" layoutY="371.0" mnemonicParsing="false" onAction="#goToCreateAccOP" style="-fx-background-color: white;" text="Create Account" textFill="#2817e1">
+      <Button layoutX="125.0" layoutY="371.0" mnemonicParsing="false" onAction="#goToCreateAccOP" style="-fx-background-color: #1C0C4F;" text="Create Account" textFill="WHITE">
          <font>
             <Font name="Georgia" size="15.0" />
          </font></Button>
