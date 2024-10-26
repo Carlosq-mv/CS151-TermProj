@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AccountsController">
+   <children>
+      <StackPane layoutX="10.0" layoutY="13.0" prefHeight="75.0" prefWidth="800.0" style="-fx-background-color: #1C0C4F;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <Label prefHeight="53.0" prefWidth="166.0" text="Accounts" textFill="#f5f4f4">
+               <font>
+                  <Font name="Georgia" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <TableView fx:id="accTable" layoutX="130.0" layoutY="147.0" prefHeight="473.0" prefWidth="560.0">
+        <columns>
+          <TableColumn fx:id="accNameCol" prefWidth="296.0853729248047" text="Account Name" />
+          <TableColumn fx:id="balanceCol" prefWidth="164.91455078125" text="Balance" />
+            <TableColumn fx:id="dateCol" prefWidth="98.04177856445312" text="Date" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
