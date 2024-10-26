@@ -9,5 +9,6 @@ build.fxbuild
 # MacOS specific files
 .DS_Store
 
-# Database file
+# Database file / flat files
 *.db
+*.csv
