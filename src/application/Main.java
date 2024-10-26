@@ -1,5 +1,6 @@
 package application;
 	
+import application.controller.DataAccessLayer.DbConnection;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -21,8 +22,11 @@ public class Main extends Application {
 			// keep a reference of the mainBox inside the shared object
 			Shared shared = Shared.getInstance();
 			shared.setMainBox(mainBox);
+			
+			// create csv file
+			DbConnection.CSVInit();
 		} catch(Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
