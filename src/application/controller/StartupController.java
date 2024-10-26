@@ -13,7 +13,7 @@ public class StartupController {
 	private Shared shared = Shared.getInstance();	
 	
 	@FXML public void goToCreateAccOP() {
-		URL url = getClass().getResource("/view/NewAccount.fxml");
+		URL url = getClass().getClassLoader().getResource("view/NewAccount.fxml");
 		
 		try {
 			AnchorPane accPane = (AnchorPane) FXMLLoader.load(url);

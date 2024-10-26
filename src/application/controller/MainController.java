@@ -18,7 +18,7 @@ public class MainController {
 	}
 	
 	@FXML public void showStartUpOp() {
-		URL url = getClass().getResource("/view/Startup.fxml");
+		URL url = getClass().getClassLoader().getResource("view/Startup.fxml");
 		
 		// read the file & convert to anchor pane
 		try {
@@ -41,6 +41,28 @@ public class MainController {
 	
 	@FXML public void goHomeOp() {
 		showStartUpOp();
+	}
+	
+	@FXML public void goToAccountsOp() {
+		URL url = getClass().getClassLoader().getResource("view/Accounts.fxml");
+		
+		// read the file & convert to anchor pane
+		try {
+			AnchorPane accountsPage = (AnchorPane) FXMLLoader.load(url);
+			
+			// remove the previous child if there is one
+			if(mainBox.getChildren().size() > 1) {
+				mainBox.getChildren().remove(1);
+			}
+			
+			// get the children of mainBox & add pane1
+			mainBox.getChildren().add(accountsPage);
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

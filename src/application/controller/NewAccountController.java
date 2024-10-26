@@ -2,6 +2,9 @@ package application.controller;
 
 import java.time.LocalDate;
 
+import application.Constants;
+import application.controller.DataAccessLayer.CSVOperations;
+import application.models.Account;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -9,14 +12,14 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-//TODO: Save data to a database
-//TODO: Duplicate validation (prevent duplicates for AccountName)
+
 public class NewAccountController {
 	
 	@FXML private TextField accountName;
 	@FXML private TextField openingBalance;
 	@FXML private DatePicker openingDate;
-	
+	private CSVOperations csvOp = new CSVOperations();
+
 	
 	@FXML public void initialize() {
 		openingDate.setValue(LocalDate.now());
@@ -40,10 +43,19 @@ public class NewAccountController {
 			return;
 		}
 		
+		if(csvOp.isDuplicate(accName, Constants.ACC_FILE_PATH)) {
+			flashMessage(AlertType.ERROR, "Account Already Exists", "Please enter a new account.");
+			return;
+		}
+		
+		Account acc = new Account(accName, opBal, opDate);
+		csvOp.addReccord(acc.toCSV(), Constants.ACC_FILE_PATH);
+		
 		flashMessage(AlertType.INFORMATION, "Success", "New Account Added.");
 		clearInputs();
+
+		System.out.println(acc.toCSV());
 		
-		System.out.println("Input: " + accName + ", " + opBal + ", " + opDate);
 	}
 	
 	@FXML public void handleCancelOp() {
