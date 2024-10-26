@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.Constants;
+import application.DataAccessLayer.AccountDAO;
 import application.models.Account;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -21,6 +22,7 @@ public class AccountsController {
     @FXML private TableColumn<Account, String> accNameCol;
     @FXML private TableColumn<Account, Double> balanceCol;
     @FXML private TableColumn<Account, LocalDate> dateCol;
+	private AccountDAO accountDAO = AccountDAO.getInstance();
     
     @FXML 
     public void initialize() {
@@ -29,10 +31,17 @@ public class AccountsController {
         balanceCol.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getBalance()).asObject());
         dateCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getOpeningDate()));
 
-        // Load accounts from the CSV file
-        getAccountRecords();
+        // Load accounts from the database
+        displayAccount();
+    }
+
+    public void displayAccount() {
+    	List<Account> accounts = accountDAO.getAccountRecords();
+    	accTable.getItems().addAll(accounts);
     }
     
+    // csv stuff
+    // NOTE: delete later
     public void getAccountRecords() {
     	List<Account> accounts = new ArrayList<>();
 		try (BufferedReader reader = new BufferedReader(new FileReader(Constants.ACC_FILE_PATH))) {

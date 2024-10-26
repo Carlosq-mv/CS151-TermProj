@@ -1,6 +1,6 @@
 package application;
 	
-import application.controller.DataAccessLayer.DbConnection;
+import application.DataAccessLayer.DbConnection;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -23,8 +23,8 @@ public class Main extends Application {
 			Shared shared = Shared.getInstance();
 			shared.setMainBox(mainBox);
 			
-			// create csv file
-			DbConnection.CSVInit();
+			// create database files
+			DbConnection.DBInit();
 		} catch(Exception e) {
 			//e.printStackTrace();
 		}
