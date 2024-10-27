@@ -4,7 +4,7 @@
 .classpath
 .project
 .settings/
-build.fxbuild
+
 
 # MacOS specific files
 .DS_Store
