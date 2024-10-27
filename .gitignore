@@ -12,3 +12,6 @@
 # Database file / flat files
 *.db
 *.csv
+
+# jar files
+*.jar
