@@ -2,10 +2,10 @@ package application;
 
 public class Constants {
 	// file paths for CSV files
-	public static final String ACC_FILE_PATH = "lib/Accounts.csv";
+	public static final String ACC_FILE_PATH = "db/Accounts.csv";
 	
 	// database file with driver
-	public static final String ACC_DB = "jdbc:sqlite:lib/Account.db";
+	public static final String ACC_DB = "jdbc:sqlite:db/Account.db";
 		
 	// SQL Table Creation Statements
 	public static final String SQL_ACC_TABLE = """ 
