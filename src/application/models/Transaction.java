@@ -11,11 +11,12 @@ public class Transaction {
 	private double depositAmount;
 	
 	public Transaction(String accountName, String transactionType, LocalDate date, String description) {
-		super();
 		this.accountName = accountName;
 		this.transactionType = transactionType;
 		this.date = date;
 		this.description = description;
+		this.paymentAmonunt = 0.0;
+		this.depositAmount = 0.0;
 	}
 	
 	public String getAccountName() {
@@ -65,10 +66,5 @@ public class Transaction {
 	public void setDepositAmount(double depositAmount) {
 		this.depositAmount = depositAmount;
 	}
-	
-	
-	
-	
-	
 	
 }
