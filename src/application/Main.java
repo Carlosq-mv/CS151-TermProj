@@ -24,7 +24,8 @@ public class Main extends Application {
 			shared.setMainBox(mainBox);
 			
 			// create database files
-			DbConnection.DBInit();
+			DbConnection dbConn = DbConnection.getInstance();
+			dbConn.DBInit();
 		} catch(Exception e) {
 			//e.printStackTrace();
 		}
