@@ -1,13 +1,8 @@
 package application.controller;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-import application.Constants;
 import application.DataAccessLayer.AccountDAO;
 import application.models.Account;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -40,27 +35,4 @@ public class AccountsController {
     	accTable.getItems().addAll(accounts);
     }
     
-    // csv stuff
-    // NOTE: delete later
-    public void getAccountRecords() {
-    	List<Account> accounts = new ArrayList<>();
-		try (BufferedReader reader = new BufferedReader(new FileReader(Constants.ACC_FILE_PATH))) {
-			String line;
-			String header = reader.readLine();
-			
-			while((line = reader.readLine()) != null) {
-				String[] parts = line.split(",");
-				String accName = parts[0].trim();
-				double balance = Double.parseDouble(parts[1].trim());
-	            LocalDate date = LocalDate.parse(parts[2].trim());
-	          
-	            accounts.add(new Account(accName, balance, date));
-			}
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		// Add accounts to the TableView
-        accTable.getItems().addAll(accounts);
-    }
-	
 }

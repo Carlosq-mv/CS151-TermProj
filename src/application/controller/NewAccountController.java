@@ -2,8 +2,8 @@ package application.controller;
 
 import java.time.LocalDate;
 
+import application.Shared;
 import application.DataAccessLayer.AccountDAO;
-import application.DataAccessLayer.CSVOperations;
 import application.models.Account;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -18,8 +18,8 @@ public class NewAccountController {
 	@FXML private TextField accountName;
 	@FXML private TextField openingBalance;
 	@FXML private DatePicker openingDate;
-	private CSVOperations csvOp = new CSVOperations();
 	private AccountDAO accountDAO = AccountDAO.getInstance();
+	private Shared shared = Shared.getInstance();
 
 	
 	@FXML public void initialize() {
@@ -37,19 +37,19 @@ public class NewAccountController {
 		
 		// check if there is any missing input data
 		if(isEmptyFields(accName, opBalStr, opDate)) {
-			flashMessage(AlertType.ERROR, "Empty Fields", "Please fill in all fields.");
+			shared.flashMessage(AlertType.ERROR, "Empty Fields", "Please fill in all fields.");
 			return;
 		}
 		
 		// check if balance is valid (Must be greater than 0)
 		if(opBal <= 0.0) {
-			flashMessage(AlertType.ERROR, "Invalid Balance Value", "Please enter a valid monetary balance.");
+			shared.flashMessage(AlertType.ERROR, "Invalid Balance Value", "Please enter a valid monetary balance.");
 			return;
 		}
 	
 		// check if there are any existing account names
 		if(accountDAO.isDuplicate(acc)) {
-			flashMessage(AlertType.ERROR, "Account already exists", "Please enter a new account.");
+			shared.flashMessage(AlertType.ERROR, "Account already exists", "Please enter a new account.");
 			return;
 		}
 		
@@ -57,10 +57,8 @@ public class NewAccountController {
 		accountDAO.addAccount(acc);
 		
 		// show some success message to user
-		flashMessage(AlertType.INFORMATION, "Success", "New Account Added.");
+		shared.flashMessage(AlertType.INFORMATION, "Success", "New Account Added.");
 		clearInputs();
-
-		System.out.println(acc.toCSV());
 	}
 	
 	@FXML public void handleCancelOp() {
@@ -85,14 +83,7 @@ public class NewAccountController {
 		openingDate.setValue(LocalDate.now());
 	}
 	
-	private void flashMessage(AlertType type, String title, String content ) {
-		Alert alert = new Alert(type);
-	    alert.setTitle(title);
-        alert.setHeaderText("");
-        alert.setContentText(content);
-  
-	    alert.show();	
-	}
+
 	
 	private double convertOpeningBalanceToDouble(String opBalStr) {
 		double opBal = 0.0;
