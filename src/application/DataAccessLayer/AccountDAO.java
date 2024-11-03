@@ -13,6 +13,7 @@ import application.models.Account;
 public class AccountDAO {
 
     private static AccountDAO instance = new AccountDAO();
+    private DbConnection dbConnection = DbConnection.getInstance();
 
     private AccountDAO() {}
 
@@ -23,7 +24,7 @@ public class AccountDAO {
 	public void addAccount(Account account) {
 		// add a new account to database
 		String sql = "INSERT INTO Account (name, balance, date) VALUES (?, ?, ?)";
-		try (PreparedStatement preparedStatement = DbConnection.connect().prepareStatement(sql)) {
+		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
 
         	preparedStatement.setString(1, account.getAccountName());
             preparedStatement.setDouble(2, account.getBalance());
@@ -39,7 +40,7 @@ public class AccountDAO {
 		// check if account to be inserted already exists
 		String sql = "SELECT COUNT(*) FROM Account WHERE name = ?";
 		
-		try (PreparedStatement preparedStatement = DbConnection.connect().prepareStatement(sql)) {
+		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
 
         	preparedStatement.setString(1, account.getAccountName());
         	ResultSet resultSet = preparedStatement.executeQuery(); 
@@ -61,9 +62,9 @@ public class AccountDAO {
 	public List<Account> getAccountRecords() {
 		// get all of the accounts in database
 		List<Account> accounts = new ArrayList<>();
-		String sql = "SELECT * FROM Account";
+		String sql = "SELECT name, balance, date FROM Account ORDER BY date DESC";
 		
-		try (PreparedStatement preparedStatement = DbConnection.connect().prepareStatement(sql)) {
+		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
 
         	ResultSet resultSet = preparedStatement.executeQuery(); 
         	
@@ -72,9 +73,33 @@ public class AccountDAO {
         		String name = resultSet.getString("name");
                 double balance = resultSet.getDouble("balance");
                 LocalDate date = resultSet.getDate("date").toLocalDate(); 
+                
 
                 // Add to the list
                 accounts.add(new Account(name, balance, date)); 
+            }
+     
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		return accounts;
+	}
+	
+	public List<String> getAccountNameRecords() {
+		// get all of the accounts in database
+		List<String> accounts = new ArrayList<>();
+		String sql = "SELECT name FROM Account ORDER BY id DESC";
+		
+		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
+
+        	ResultSet resultSet = preparedStatement.executeQuery(); 
+        	
+        	// Iterate through the result set
+        	while (resultSet.next()) { 
+        		String name = resultSet.getString("name");
+                
+                // Add to the list
+                accounts.add(name); 
             }
      
         } catch (SQLException e) {
