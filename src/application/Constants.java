@@ -1,11 +1,8 @@
 package application;
 
 public class Constants {
-	// file paths for CSV files
-	public static final String ACC_FILE_PATH = "db/Accounts.csv";
-	
 	// database file with driver
-	public static final String ACC_DB = "jdbc:sqlite:db/Account.db";
+	public static final String DATABASE = "jdbc:sqlite:db/WalletWise.db";
 		
 	// SQL Table Creation Statements
 	public static final String SQL_ACC_TABLE = """ 
@@ -17,5 +14,23 @@ public class Constants {
 		);
 			
 	""";
-
+	
+	public static final String TRANSACTION_TYPE_TABLE = """
+		CREATE TABLE IF NOT EXISTS TransactionType (
+			ID INTEGER PRIMARY KEY AUTOINCREMENT,
+			transaction_type TEXT NOT NULL UNIQUE
+		);		
+	""";
+	
+	public static final String TRANSACTION_TABLE = """
+		CREATE TABLE IF NOT EXISTS "Transaction" (
+			ID INTEGER PRIMARY KEY AUTOINCREMENT,
+			account TEXT NOT NULL,
+			transaction_type TEXT NOT NULL,
+			date DATE NOT NULL,
+			description TEXT NOT NULL,
+			pay_amount DECIMAL,
+			deposit_amount DECIMAL
+		);	
+	""";
 }

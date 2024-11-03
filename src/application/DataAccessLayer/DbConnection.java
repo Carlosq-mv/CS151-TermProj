@@ -8,13 +8,27 @@ import java.sql.Statement;
 import application.Constants;
 
 public class DbConnection {
+	private static DbConnection dbConn = new DbConnection();
+	private Connection SQLConnection;
+	
+	
+	private DbConnection()  {
+		SQLConnection = connect();
+	}
+	
+	public static DbConnection getInstance() {
+		return dbConn;
+	}
+	
+	public Connection getSQLConnection()  {
+		return SQLConnection;
+	}
 	
 	// create a connection to SQLite
-	public static Connection connect() {
-		Connection connection;
+	private Connection connect() {
+		
 		try {
-			connection = DriverManager.getConnection(Constants.ACC_DB);
-			return connection;
+			return DriverManager.getConnection(Constants.DATABASE);
 		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -22,47 +36,21 @@ public class DbConnection {
 	}
 	
 	// creates all database tables (called in main)
-	public static void DBInit() {
-		createAccTable();
+	public void DBInit() {
+		createTable(Constants.SQL_ACC_TABLE);
+		createTable(Constants.TRANSACTION_TYPE_TABLE);	
+		createTable(Constants.TRANSACTION_TABLE);
 		// add other tables here
 	}
 
-	
-    public static void createAccTable() {
-    	// create the Account table
-        String sql = Constants.SQL_ACC_TABLE;
-        
-        try (Connection conn = connect();
-             Statement statement = conn.createStatement()) {
-             
+
+    public void createTable(String sql) {
+    	try (Statement statement = getSQLConnection().createStatement()) {
             statement.execute(sql);
-            System.out.println("table 'Account' has been created or exists.");
         } catch (SQLException e) {
             System.err.println("error creating table: " + e.getMessage());
         }
     }
 	
-	
-//  csv stuff below
-// 	NOTE: delete later maybe
-//	public static void CSVInit() {
-//		createAccFile();
-//	}
-//	
-//	public static void createAccFile() {
-//		File file = new File(Constants.ACC_FILE_PATH);
-//		
-//		// check if the file already exists
-//	    if (file.exists()) {
-//	        System.out.println("File already exists: " + Constants.ACC_FILE_PATH);
-//	        return; 
-//	    }
-//		
-//		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-//			writer.write("Name,Opening Balance,Date");
-//			writer.newLine();
-//		} catch(IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
+
 }
