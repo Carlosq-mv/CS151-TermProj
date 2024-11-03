@@ -10,7 +10,7 @@ import java.util.List;
 
 import application.models.Account;
 
-public class AccountDAO {
+public class AccountDAO implements DAOInterface<Account>{
 
     private static AccountDAO instance = new AccountDAO();
     private DbConnection dbConnection = DbConnection.getInstance();
@@ -21,7 +21,7 @@ public class AccountDAO {
         return instance;
     }
 	
-	public void addAccount(Account account) {
+	public void addRecord(Account account) {
 		// add a new account to database
 		String sql = "INSERT INTO Account (name, balance, date) VALUES (?, ?, ?)";
 		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
@@ -59,7 +59,7 @@ public class AccountDAO {
 		return false;
 	}
 	
-	public List<Account> getAccountRecords() {
+	public List<Account> getRecords() {
 		// get all of the accounts in database
 		List<Account> accounts = new ArrayList<>();
 		String sql = "SELECT name, balance, date FROM Account ORDER BY date DESC";
