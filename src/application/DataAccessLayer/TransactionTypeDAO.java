@@ -3,13 +3,10 @@ package application.DataAccessLayer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.models.Account;
-
-public class TransactionTypeDAO {
+public class TransactionTypeDAO implements DAOInterface<String> {
 	private static TransactionTypeDAO instance = new TransactionTypeDAO();
 	private DbConnection dbConnection = DbConnection.getInstance();
 
@@ -19,7 +16,7 @@ public class TransactionTypeDAO {
 		return instance;
 	}
 	
-	public void addTransactionType(String transactionType) {
+	public void addRecord(String transactionType) {
 		String sql = "INSERT INTO TransactionType (transaction_type) VALUES (?)";
 		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
 
@@ -31,7 +28,7 @@ public class TransactionTypeDAO {
         }
 	}
 	
-	public boolean isDuplicateTransactionType(String transactionType) {
+	public boolean isDuplicate(String transactionType) {
 		String sql = "SELECT COUNT(*) FROM TransactionType WHERE LOWER(transaction_type) = LOWER(?)";
 		
 		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
@@ -53,7 +50,7 @@ public class TransactionTypeDAO {
 		return false;
 	}
 	
-	public List<String> getTransactionTypeRecords() {
+	public List<String> getRecords() {
 		List<String> transactionTypes = new ArrayList<>();
 		String sql = "SELECT transaction_type FROM TransactionType ORDER BY id DESC";
 		

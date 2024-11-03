@@ -2,11 +2,16 @@ package application.DataAccessLayer;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import application.models.Account;
 import application.models.Transaction;
 
-public class TransactionDAO {
+public class TransactionDAO implements DAOInterface<Transaction> {
 	private static TransactionDAO instance = new TransactionDAO();
 	private DbConnection dbConnection = DbConnection.getInstance();
 	
@@ -16,7 +21,7 @@ public class TransactionDAO {
 		return instance;
 	}
 	
-	public void addTransaction(Transaction transaction) {
+	public void addRecord(Transaction transaction) {
 		String sql =  """
 			INSERT into "Transaction" (account, transaction_type, date, description, pay_amount, deposit_amount) VALUES (?, ?, ?, ?, ?, ?)
 		""";
@@ -34,4 +39,38 @@ public class TransactionDAO {
             e.printStackTrace();
         }
 	}
+	
+	public List<Transaction> getRecords() {
+		List<Transaction> transactions = new ArrayList<>();
+		String sql = "SELECT * FROM \"Transaction\"";
+		
+		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			// Iterate through the result set
+        	while (resultSet.next()) { 
+        		String name = resultSet.getString("account");
+                String transactionType = resultSet.getString("transaction_type");
+                LocalDate date = resultSet.getDate("date").toLocalDate(); 
+                String description = resultSet.getString("description");
+                double payAmount = resultSet.getDouble("pay_amount");
+                double depositAmount = resultSet.getDouble("deposit_amount");
+                
+
+                // Add to the list
+                Transaction transaction = new Transaction(name, transactionType, date, description);
+                transaction.setPaymentAmonunt(payAmount);
+                transaction.setDepositAmount(depositAmount);
+                
+                transactions.add(transaction); 
+        	}
+        	
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		return transactions;
+		
+	}
+	
 }
