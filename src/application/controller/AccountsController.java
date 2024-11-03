@@ -31,7 +31,7 @@ public class AccountsController {
     }
 
     public void displayAccount() {
-    	List<Account> accounts = accountDAO.getAccountRecords();
+    	List<Account> accounts = accountDAO.getRecords();
     	accTable.getItems().addAll(accounts);
     }
     

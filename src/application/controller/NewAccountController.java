@@ -54,7 +54,7 @@ public class NewAccountController {
 		}
 		
 		// add a new account to database
-		accountDAO.addAccount(acc);
+		accountDAO.addRecord(acc);
 		
 		// show some success message to user
 		shared.flashMessage(AlertType.INFORMATION, "Success", "New Account Added.");

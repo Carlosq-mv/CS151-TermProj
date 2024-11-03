@@ -25,7 +25,7 @@ public class TransactionTypeController {
 	@FXML public void handleSaveOp() {
 		String tType = transactionType.getText();
 		
-		if(transactionDAO.isDuplicateTransactionType(tType)) {
+		if(transactionDAO.isDuplicate(tType)) {
 			shared.flashMessage(AlertType.ERROR, "Transaction Type already exists", "Please enter a new transaction type.");
 			return;
 		}
@@ -35,7 +35,7 @@ public class TransactionTypeController {
 			return;
 		}
 		
-		transactionDAO.addTransactionType(tType);
+		transactionDAO.addRecord(tType);
 		
 		shared.flashMessage(AlertType.INFORMATION, "Success", "New transaction type added.");
 		transactionType.clear();
@@ -60,7 +60,7 @@ public class TransactionTypeController {
 	
 	public void displayTransactionType() {
 		transactionTypeList.setItems(FXCollections.observableArrayList(
-				transactionDAO.getTransactionTypeRecords()
+				transactionDAO.getRecords()
 		));
 	}
 }

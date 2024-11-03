@@ -34,7 +34,7 @@ public class TransactionController {
 	
 
 	@FXML void initialize() {
-		List<String> transactionRecords = transactionTypeDao.getTransactionTypeRecords();
+		List<String> transactionRecords = transactionTypeDao.getRecords();
 		List<String> accountNameRecords = accountDao.getAccountNameRecords();
 		
 		transactionDropDownMenu.getItems().addAll(transactionRecords);
@@ -94,7 +94,7 @@ public class TransactionController {
 		}
 		
 		// add the transaction to database
-		transactionDao.addTransaction(transaction);
+		transactionDao.addRecord(transaction);
 		
 		// show the user a success message
 		shared.flashMessage(AlertType.INFORMATION, "Success", "New Transaction Added.");
