@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TransactionController">
+   <children>
+      <StackPane layoutX="10.0" layoutY="13.0" prefHeight="75.0" prefWidth="800.0" style="-fx-background-color: #1C0C4F;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <Label prefHeight="53.0" prefWidth="236.0" text="New Account" textFill="#f5f4f4">
+               <font>
+                  <Font name="Georgia" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <Label layoutX="129.0" layoutY="131.0" text="Account*">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="transactionDate" layoutX="128.0" layoutY="277.0" prefHeight="27.0" prefWidth="207.0" />
+      <Label layoutX="129.0" layoutY="235.0" text="Date*">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="603.0" layoutY="691.0" mnemonicParsing="false" onAction="#handleSaveOp" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #72BB53;" text="Save">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="133.0" layoutY="691.0" mnemonicParsing="false" onAction="#handleCancelOp" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: red;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Label layoutX="522.0" layoutY="131.0" text="Transaction*">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="accountDropDownMenu" layoutX="129.0" layoutY="170.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="transactionDropDownMenu" layoutX="522.0" layoutY="170.0" prefWidth="150.0" />
+      <TextField fx:id="paymentAmount" layoutX="128.0" layoutY="383.0" />
+      <Label layoutX="128.0" layoutY="348.0" prefHeight="24.0" prefWidth="161.0" text="Payment Amount">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="522.0" layoutY="348.0" prefHeight="24.0" prefWidth="150.0" text="Deposit Amount">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="depositAmount" layoutX="523.0" layoutY="383.0" />
+      <TextArea fx:id="transactionDescription" layoutX="128.0" layoutY="498.0" prefHeight="130.0" prefWidth="556.0" />
+      <Label layoutX="128.0" layoutY="457.0" prefHeight="24.0" prefWidth="116.0" text="Description*">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

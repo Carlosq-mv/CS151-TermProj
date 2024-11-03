@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TransactionTypeController">
+   <children>
+      <StackPane layoutX="10.0" layoutY="13.0" prefHeight="75.0" prefWidth="800.0" style="-fx-background-color: #1C0C4F;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <Label prefHeight="53.0" prefWidth="435.0" text="New Transactions Types" textFill="#f5f4f4">
+               <font>
+                  <Font name="Georgia" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <TextField fx:id="transactionType" layoutX="133.0" layoutY="225.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <Label layoutX="129.0" layoutY="183.0" text="New Transaction Type*">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="469.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleSaveOp" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #72BB53;" text="Save">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="133.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleCancelOp" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: red;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <ListView fx:id="transactionTypeList" layoutX="129.0" layoutY="347.0" prefHeight="237.0" prefWidth="406.0" styleClass="list-view" />
+      <Label layoutX="129.0" layoutY="312.0" text="Transaction Type Log">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

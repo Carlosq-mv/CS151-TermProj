@@ -22,11 +22,11 @@
             </Label>
          </children>
       </StackPane>
-      <TableView fx:id="accTable" layoutX="130.0" layoutY="147.0" prefHeight="473.0" prefWidth="560.0">
+      <TableView fx:id="accTable" layoutX="130.0" layoutY="147.0" prefHeight="473.0" prefWidth="561.0" styleClass="table-view">
         <columns>
           <TableColumn fx:id="accNameCol" prefWidth="296.0853729248047" text="Account Name" />
           <TableColumn fx:id="balanceCol" prefWidth="164.91455078125" text="Balance" />
-            <TableColumn fx:id="dateCol" prefWidth="98.04177856445312" text="Date" />
+            <TableColumn fx:id="dateCol" prefWidth="97.0" text="Date" />
         </columns>
       </TableView>
    </children>

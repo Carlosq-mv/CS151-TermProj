@@ -12,12 +12,24 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #1C0C4F;">
          <children>
-            <Button layoutX="66.0" layoutY="37.0" mnemonicParsing="false" onAction="#goHomeOp" text="Home">
+            <Button fx:id="homeBtn" layoutX="17.0" layoutY="35.0" mnemonicParsing="false" onAction="#goHomeOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Home">
                <font>
-                  <Font size="17.0" />
+                  <Font name="Georgia" size="17.0" />
                </font>
             </Button>
-            <Button layoutX="65.0" layoutY="106.0" mnemonicParsing="false" onAction="#goToAccountsOp" text="Accounts" />
+            <Button fx:id="accountsBtn" layoutX="17.0" layoutY="106.0" mnemonicParsing="false" onAction="#goToAccountsOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Accounts">
+               <font>
+                  <Font name="Georgia" size="17.0" />
+               </font></Button>
+            <Button fx:id="transactionTypeBtn" layoutX="17.0" layoutY="176.0" mnemonicParsing="false" onAction="#goToTransactionsTypeOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Transactions Types">
+               <font>
+                  <Font name="Georgia" size="17.0" />
+               </font></Button>
+            <Button fx:id="enterTransactionBtn" layoutX="17.0" layoutY="243.0" mnemonicParsing="false" onAction="#goToEnterTransactionOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Enter Transactions">
+               <font>
+                  <Font name="Georgia" size="17.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
    </children>
 </HBox>
