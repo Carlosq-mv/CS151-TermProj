@@ -33,13 +33,36 @@ public class ScheduledTransactionDAO implements DAOInterface<ScheduledTransactio
         	preparedStatement.setInt(5, transaction.getDueDate());
         	preparedStatement.setDouble(6, transaction.getPayAmount());
             preparedStatement.executeUpdate();
-            System.out.println("TransactionType added successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
 	}
 	
+	@Override
+	public boolean isDuplicate(ScheduledTransaction transaction) {
+		// check if transaction name to be inserted already exists
+		String sql = "SELECT COUNT(*) FROM ScheduledTransaction WHERE name = ?";
+		
+		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
 
+        	preparedStatement.setString(1, transaction.getName());
+        	ResultSet resultSet = preparedStatement.executeQuery(); 
+  
+        	// check if resulting query has rows
+        	if (resultSet.next()) {
+        		// get count from the first column in resulting query
+        		int count = resultSet.getInt(1); 
+        		// if greater than 0, there is a duplicate
+                return count > 0; 
+             }
+     
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		return false;
+		
+	}
+	
 	@Override
 	public List<ScheduledTransaction> getRecords() {
 		List<ScheduledTransaction> transactions = new ArrayList<>();
@@ -70,6 +93,5 @@ public class ScheduledTransactionDAO implements DAOInterface<ScheduledTransactio
         }
 		return transactions;
 	}
-
 	
 }

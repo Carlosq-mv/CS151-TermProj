@@ -101,6 +101,13 @@ public class ScheduledTransactionController implements ControllerInterface {
 		
 		ScheduledTransaction transaction = new ScheduledTransaction(tName, accountName, transactionType, freq, date, amount);
 		
+		if(stDao.isDuplicate(transaction)) {
+			shared.flashMessage(AlertType.ERROR, "Reccuring transaction name already exists", "Please enter a new reccuring transaction.");
+			return;
+		}
+		
+		
+		
 		// add the transaction to database
 		stDao.addRecord(transaction);
 		
