@@ -17,6 +17,7 @@ public class Main extends Application {
 			Scene scene = new Scene(mainBox);
 			scene.getStylesheets().add(getClass().getClassLoader().getResource("css/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Wallet Wise");
 			primaryStage.show();
 			
 			// keep a reference of the mainBox inside the shared object
