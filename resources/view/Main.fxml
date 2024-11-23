@@ -21,11 +21,30 @@
                <font>
                   <Font name="Georgia" size="17.0" />
                </font></Button>
-            <Button fx:id="transactionTypeBtn" layoutX="17.0" layoutY="176.0" mnemonicParsing="false" onAction="#goToTransactionsTypeOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Transactions Types">
+            <Button fx:id="transactionTypeBtn" layoutX="17.0" layoutY="225.0" mnemonicParsing="false" onAction="#goToTransactionsTypeOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Transactions Types">
                <font>
                   <Font name="Georgia" size="17.0" />
                </font></Button>
-            <Button fx:id="enterTransactionBtn" layoutX="17.0" layoutY="243.0" mnemonicParsing="false" onAction="#goToEnterTransactionOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Enter Transactions">
+            <Button fx:id="enterTransactionBtn" layoutX="17.0" layoutY="285.0" mnemonicParsing="false" onAction="#goToEnterTransactionOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Enter Transactions">
+               <font>
+                  <Font name="Georgia" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="scheduledTransaction" layoutX="17.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToScheduledTransactionOp" prefHeight="32.0" prefWidth="170.0" styleClass="nav-button" text="Reccuring">
+               <font>
+                  <Font name="Georgia" size="17.0" />
+               </font>
+            </Button>
+            <AnchorPane layoutX="2.0" layoutY="162.0" prefHeight="46.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="24.0" layoutY="7.0" text="Transactions" textFill="WHITE">
+                     <font>
+                        <Font name="Georgia" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Button fx:id="viewScheduledTransaction" layoutX="16.0" layoutY="396.0" mnemonicParsing="false" onAction="#goToViewScheduledTransactionOp" prefHeight="32.0" prefWidth="170.0" styleClass="nav-button" text="View Reccuring">
                <font>
                   <Font name="Georgia" size="17.0" />
                </font>
