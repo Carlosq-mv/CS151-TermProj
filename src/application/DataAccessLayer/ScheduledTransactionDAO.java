@@ -1,10 +1,8 @@
 package application.DataAccessLayer;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class ScheduledTransactionDAO implements DAOInterface<ScheduledTransactio
 	@Override
 	public void addRecord(ScheduledTransaction transaction) {
 		String sql = """
-			Insert INTO ScheduledTransaction (name, account, transaction_type, frequency, date, pay_amount) VALUES (?,?,?,?,?)
+			Insert INTO ScheduledTransaction (name, account, transaction_type, frequency, date, pay_amount) VALUES (?,?,?,?,?,?)
 		""";
 		
 		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
@@ -32,7 +30,7 @@ public class ScheduledTransactionDAO implements DAOInterface<ScheduledTransactio
         	preparedStatement.setString(2, transaction.getAccount());
         	preparedStatement.setString(3, transaction.getTransactionType());
         	preparedStatement.setString(4, transaction.getFrequency());
-        	preparedStatement.setDate(5, Date.valueOf(transaction.getDueDate()));
+        	preparedStatement.setInt(5, transaction.getDueDate());
         	preparedStatement.setDouble(6, transaction.getPayAmount());
             preparedStatement.executeUpdate();
             System.out.println("TransactionType added successfully.");
@@ -57,7 +55,7 @@ public class ScheduledTransactionDAO implements DAOInterface<ScheduledTransactio
 				String account = resultSet.getString("account");
                 String transactionType = resultSet.getString("transaction_type");
                 String frequency = resultSet.getString("frequency");
-                LocalDate date = resultSet.getDate("date").toLocalDate(); 
+                int date = resultSet.getInt("date"); 
                 double payAmount = resultSet.getDouble("pay_amount");
                 
 

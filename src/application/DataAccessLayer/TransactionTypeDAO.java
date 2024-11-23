@@ -16,6 +16,7 @@ public class TransactionTypeDAO implements DAOInterface<String> {
 		return instance;
 	}
 	
+	@Override
 	public void addRecord(String transactionType) {
 		String sql = "INSERT INTO TransactionType (transaction_type) VALUES (?)";
 		try (PreparedStatement preparedStatement = dbConnection.getSQLConnection().prepareStatement(sql)) {
@@ -28,6 +29,7 @@ public class TransactionTypeDAO implements DAOInterface<String> {
         }
 	}
 	
+	@Override
 	public boolean isDuplicate(String transactionType) {
 		String sql = "SELECT COUNT(*) FROM TransactionType WHERE LOWER(transaction_type) = LOWER(?)";
 		
@@ -50,6 +52,7 @@ public class TransactionTypeDAO implements DAOInterface<String> {
 		return false;
 	}
 	
+	@Override
 	public List<String> getRecords() {
 		List<String> transactionTypes = new ArrayList<>();
 		String sql = "SELECT transaction_type FROM TransactionType ORDER BY id DESC";

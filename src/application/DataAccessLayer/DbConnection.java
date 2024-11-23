@@ -1,5 +1,6 @@
 package application.DataAccessLayer;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -37,9 +38,13 @@ public class DbConnection {
 	
 	// creates all database tables (called in main)
 	public void DBInit() {
-		createTable(Constants.SQL_ACC_TABLE);
+//		File file = new File("db/WalletWise.db");
+//		if (file.exists()) return;
+		
+		createTable(Constants.ACCOUNT_TABLE);
 		createTable(Constants.TRANSACTION_TYPE_TABLE);	
 		createTable(Constants.TRANSACTION_TABLE);
+		createTable(Constants.SCHEDULED_TRANSACTION_TABLE);
 		// add other tables here
 	}
 

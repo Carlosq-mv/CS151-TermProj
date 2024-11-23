@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.models.Account;
 import application.models.Transaction;
 
 public class TransactionDAO implements DAOInterface<Transaction> {
@@ -21,6 +20,7 @@ public class TransactionDAO implements DAOInterface<Transaction> {
 		return instance;
 	}
 	
+	@Override
 	public void addRecord(Transaction transaction) {
 		String sql =  """
 			INSERT into "Transaction" (account, transaction_type, date, description, pay_amount, deposit_amount) VALUES (?, ?, ?, ?, ?, ?)
@@ -40,6 +40,7 @@ public class TransactionDAO implements DAOInterface<Transaction> {
         }
 	}
 	
+	@Override
 	public List<Transaction> getRecords() {
 		List<Transaction> transactions = new ArrayList<>();
 		String sql = "SELECT * FROM \"Transaction\"";

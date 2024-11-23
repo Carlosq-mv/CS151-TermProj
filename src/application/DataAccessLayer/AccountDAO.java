@@ -21,6 +21,7 @@ public class AccountDAO implements DAOInterface<Account>{
         return instance;
     }
 	
+    @Override
 	public void addRecord(Account account) {
 		// add a new account to database
 		String sql = "INSERT INTO Account (name, balance, date) VALUES (?, ?, ?)";
@@ -36,6 +37,7 @@ public class AccountDAO implements DAOInterface<Account>{
         }
 	}
 	
+    @Override
 	public boolean isDuplicate(Account account) {
 		// check if account to be inserted already exists
 		String sql = "SELECT COUNT(*) FROM Account WHERE name = ?";
@@ -59,6 +61,7 @@ public class AccountDAO implements DAOInterface<Account>{
 		return false;
 	}
 	
+    @Override
 	public List<Account> getRecords() {
 		// get all of the accounts in database
 		List<Account> accounts = new ArrayList<>();
