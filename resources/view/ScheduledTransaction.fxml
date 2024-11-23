@@ -47,14 +47,14 @@
             <Font name="Georgia" size="20.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="accountDropDownMenu" layoutX="517.0" layoutY="208.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="transactionDropDownMenu" layoutX="517.0" layoutY="321.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="accountDropDownMenu" layoutX="517.0" layoutY="205.0" prefHeight="35.0" prefWidth="161.0" />
+      <ChoiceBox fx:id="transactionDropDownMenu" layoutX="517.0" layoutY="318.0" prefHeight="35.0" prefWidth="161.0" />
       <Label layoutX="132.0" layoutY="279.0" prefHeight="24.0" prefWidth="170.0" text="Payment Amount*">
          <font>
             <Font name="Georgia" size="20.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="frequencyDropDownMenu" layoutX="517.0" layoutY="465.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="frequencyDropDownMenu" layoutX="517.0" layoutY="462.0" prefHeight="35.0" prefWidth="161.0" />
       <Label layoutX="136.0" layoutY="161.0" prefHeight="24.0" prefWidth="179.0" text="Transaction Name*">
          <font>
             <Font name="Georgia" size="20.0" />
@@ -65,11 +65,19 @@
             <Font name="Georgia" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="transactionName" layoutX="136.0" layoutY="208.0" promptText="ex: Rent" />
-      <TextField fx:id="paymentAmount" layoutX="133.0" layoutY="321.0" />
-      <TextField fx:id="transactionDate" layoutX="132.0" layoutY="465.0" prefHeight="28.0" prefWidth="169.0" promptText="Enter day of month">
+      <TextField fx:id="paymentAmount" layoutX="132.0" layoutY="315.0" prefHeight="40.0" prefWidth="259.0">
          <font>
-            <Font name="Georgia" size="13.0" />
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="transactionDate" layoutX="133.0" layoutY="460.0" promptText="Enter day of month">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="transactionName" layoutX="136.0" layoutY="203.0" promptText="ex: Rent">
+         <font>
+            <Font name="Georgia" size="20.0" />
          </font>
       </TextField>
    </children>

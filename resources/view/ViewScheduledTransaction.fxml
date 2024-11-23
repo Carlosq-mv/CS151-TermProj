@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ViewScheduledTransactionController">
+   <children>
+      <StackPane layoutX="10.0" layoutY="13.0" prefHeight="75.0" prefWidth="800.0" style="-fx-background-color: #1C0C4F;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <Label prefHeight="53.0" prefWidth="419.0" text="Reccuring Transactions" textFill="#f5f4f4">
+               <font>
+                  <Font name="Georgia" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <TableView fx:id="stTable" layoutX="24.0" layoutY="148.0" prefHeight="473.0" prefWidth="777.0" styleClass="table-view">
+        <columns>
+          <TableColumn fx:id="tNameCol" prefWidth="164.0" text="Transaction Name" />
+          <TableColumn fx:id="accCol" prefWidth="173.0" text="Account" />
+            <TableColumn fx:id="tTypeCol" prefWidth="147.0" text="Transaction Type" />
+            <TableColumn fx:id="payCol" prefWidth="100.0" text="Payment" />
+            <TableColumn fx:id="domCol" prefWidth="98.0" text="Day of Month" />
+            <TableColumn fx:id="freqCol" prefWidth="93.0" text="Frequency" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
