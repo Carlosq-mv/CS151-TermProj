@@ -17,7 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class TransactionController {
+public class TransactionController implements ControllerInterface {
 	
 	@FXML private DatePicker transactionDate;
 	@FXML private TextField paymentAmount;
@@ -33,7 +33,8 @@ public class TransactionController {
 	private Shared shared = Shared.getInstance();
 	
 
-	@FXML void initialize() {
+	@Override
+	@FXML public void initialize() {
 		List<String> transactionRecords = transactionTypeDao.getRecords();
 		List<String> accountNameRecords = accountDao.getAccountNameRecords();
 		
@@ -51,6 +52,7 @@ public class TransactionController {
 		}
 	}
 	
+	@Override
 	@FXML public void handleSaveOp() {
 		// get values of fxml fields
 		LocalDate tDate = transactionDate.getValue();
@@ -102,6 +104,7 @@ public class TransactionController {
 		clearInputs();
 	}
 	
+	@Override
 	@FXML public void handleCancelOp() {
 		// alert the user if they want to proceed with cancel action
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -118,17 +121,15 @@ public class TransactionController {
 	    });
 	}
 	
-	private void clearInputs() {
+	@Override
+	public void clearInputs() {
 		transactionDescription.clear();
 		depositAmount.clear();
 		paymentAmount.clear();
 	}
-
-	private boolean hasEmptyFields(LocalDate tDate, String tDescription, String transactionSelectedVal, String accountSelectedVal) {
-		return (tDate == null || tDescription.isBlank() || accountSelectedVal.isBlank() || transactionSelectedVal.isBlank());
-	}
 	
-	private double toDouble(String value) {
+	@Override
+	public double toDouble(String value) {
 		double amount = 0.0;
 		try {
 			amount = Double.parseDouble(value);
@@ -139,4 +140,7 @@ public class TransactionController {
 		return amount;
 	}
 	
+	private boolean hasEmptyFields(LocalDate tDate, String tDescription, String transactionSelectedVal, String accountSelectedVal) {
+		return (tDate == null || tDescription.isBlank() || accountSelectedVal.isBlank() || transactionSelectedVal.isBlank());
+	}
 }

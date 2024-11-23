@@ -14,7 +14,7 @@ public class MainController {
 	private Shared shared = Shared.getInstance();
 	
 	@FXML HBox mainBox;
-	@FXML private Button homeBtn, transactionTypeBtn, accountsBtn, enterTransactionBtn;
+	@FXML private Button homeBtn, transactionTypeBtn, accountsBtn, enterTransactionBtn, scheduledTransaction, viewScheduledTransaction;
 	
 	@FXML public void initialize() {
 		showStartUpOp();
@@ -50,9 +50,20 @@ public class MainController {
 		setSelectedButton(transactionTypeBtn);
 		shared.showPage("view/TransactionType.fxml");
 	}
+	
 	@FXML public void goToEnterTransactionOp() {
 		setSelectedButton(enterTransactionBtn);
 		shared.showPage("view/EnterTransaction.fxml");
+	}
+	
+	@FXML public void goToScheduledTransactionOp() {
+		setSelectedButton(scheduledTransaction);
+		shared.showPage("view/ScheduledTransaction.fxml");
+	}
+	
+	@FXML public void goToViewScheduledTransactionOp() {
+		setSelectedButton(viewScheduledTransaction);
+		
 	}
 	
 	

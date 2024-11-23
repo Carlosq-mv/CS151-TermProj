@@ -13,7 +13,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 
-public class NewAccountController {
+public class NewAccountController implements ControllerInterface {
 	
 	@FXML private TextField accountName;
 	@FXML private TextField openingBalance;
@@ -22,17 +22,19 @@ public class NewAccountController {
 	private Shared shared = Shared.getInstance();
 
 	
+	@Override
 	@FXML public void initialize() {
 		openingDate.setValue(LocalDate.now());
 	}
 	
+	@Override
 	@FXML public void handleSaveOp() {
 		String accName = accountName.getText();
 		String opBalStr = openingBalance.getText();
 		LocalDate opDate = openingDate.getValue();
 		
 		// convert balance String to type double
-		double opBal = convertOpeningBalanceToDouble(opBalStr);
+		double opBal = toDouble(opBalStr);
 		Account acc = new Account(accName, opBal, opDate);
 		
 		// check if there is any missing input data
@@ -61,6 +63,7 @@ public class NewAccountController {
 		clearInputs();
 	}
 	
+	@Override
 	@FXML public void handleCancelOp() {
 		// alert the user if they want to proceed with cancel action
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -77,15 +80,16 @@ public class NewAccountController {
 	    });
 	}
 	
-	private void clearInputs() {
+	@Override
+	public void clearInputs() {
 		accountName.clear();
 		openingBalance.clear();
 		openingDate.setValue(LocalDate.now());
 	}
 	
 
-	
-	private double convertOpeningBalanceToDouble(String opBalStr) {
+	@Override
+	public double toDouble(String opBalStr) {
 		double opBal = 0.0;
 		try {
 			opBal = Double.parseDouble(opBalStr);

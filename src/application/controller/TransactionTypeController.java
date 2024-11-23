@@ -11,17 +11,19 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class TransactionTypeController {
+public class TransactionTypeController implements ControllerInterface {
 	
 	@FXML private TextField transactionType;
 	private Shared shared = Shared.getInstance();
 	private TransactionTypeDAO transactionDAO = TransactionTypeDAO.getInstance();
 	@FXML ListView<String> transactionTypeList;
 	
+	@Override
 	@FXML public void initialize() {
 		displayTransactionType();
 	}
 	
+	@Override
 	@FXML public void handleSaveOp() {
 		String tType = transactionType.getText();
 		
@@ -42,6 +44,7 @@ public class TransactionTypeController {
 		displayTransactionType();
 	}
 	
+	@Override
 	@FXML public void handleCancelOp() {
 		// alert the user if they want to proceed with cancel action
 		Alert alert = new Alert(AlertType.CONFIRMATION);
