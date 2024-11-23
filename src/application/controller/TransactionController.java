@@ -31,6 +31,7 @@ public class TransactionController implements ControllerInterface {
 	private TransactionDAO transactionDao = TransactionDAO.getInstance();
 	private AccountDAO accountDao = AccountDAO.getInstance();
 	private Shared shared = Shared.getInstance();
+	private String msg = "No Records Available";
 	
 
 	@Override
@@ -46,9 +47,13 @@ public class TransactionController implements ControllerInterface {
 		// show the first value as default for both drop down menus
 		if (!transactionRecords.isEmpty()) {
 			transactionDropDownMenu.setValue(transactionRecords.get(0));
+		} else {
+			transactionDropDownMenu.setValue(msg);
 		}
 		if(!accountNameRecords.isEmpty() ) {
 			accountDropDownMenu.setValue(accountNameRecords.get(0));
+		} else {
+			accountDropDownMenu.setValue(msg);
 		}
 	}
 	
@@ -57,8 +62,8 @@ public class TransactionController implements ControllerInterface {
 		// get values of fxml fields
 		LocalDate tDate = transactionDate.getValue();
 		String tDescription = transactionDescription.getText();	
-		String transactionType = transactionDropDownMenu.getValue();
-		String accountName = accountDropDownMenu.getValue();
+		String transactionType = transactionDropDownMenu.getValue() == msg ? null : transactionDropDownMenu.getValue();
+		String accountName = accountDropDownMenu.getValue() == msg ? null : accountDropDownMenu.getValue();
 		
 		double selectedAmount;
 		

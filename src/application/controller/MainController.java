@@ -14,7 +14,8 @@ public class MainController {
 	private Shared shared = Shared.getInstance();
 	
 	@FXML HBox mainBox;
-	@FXML private Button homeBtn, transactionTypeBtn, accountsBtn, enterTransactionBtn, scheduledTransaction, viewScheduledTransaction;
+	@FXML private Button homeBtn, transactionTypeBtn, accountsBtn,
+	enterTransactionBtn, scheduledTransaction, viewScheduledTransaction, viewAccountsBtn;
 	
 	@FXML public void initialize() {
 		showStartUpOp();
@@ -43,7 +44,8 @@ public class MainController {
 	
 	@FXML public void goToAccountsOp() {
 		setSelectedButton(accountsBtn);
-		shared.showPage("view/Accounts.fxml");
+		shared.showPage("view/NewAccount.fxml");	
+		
 	}
 	
 	@FXML public void goToTransactionsTypeOp() {
@@ -63,7 +65,12 @@ public class MainController {
 	
 	@FXML public void goToViewScheduledTransactionOp() {
 		setSelectedButton(viewScheduledTransaction);
-		
+		shared.showPage("view/ViewScheduledTransaction.fxml");	
+	}
+	
+	@FXML public void goToViewAccountsOp() {
+		setSelectedButton(viewAccountsBtn);
+		shared.showPage("view/Accounts.fxml");
 	}
 	
 	
@@ -72,6 +79,10 @@ public class MainController {
 		homeBtn.getStyleClass().remove("selected");
 		transactionTypeBtn.getStyleClass().remove("selected");
 		accountsBtn.getStyleClass().remove("selected");
+		enterTransactionBtn.getStyleClass().remove("selected");
+		scheduledTransaction.getStyleClass().remove("selected");
+		viewScheduledTransaction.getStyleClass().remove("selected");
+		viewAccountsBtn.getStyleClass().remove("selected");
 
 	    // Add 'selected' class to the clicked button
 	    selectedButton.getStyleClass().add("selected");
