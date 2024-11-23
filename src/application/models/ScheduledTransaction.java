@@ -1,6 +1,5 @@
 package application.models;
 
-import java.time.LocalDate;
 
 public class ScheduledTransaction {
 	
@@ -8,10 +7,10 @@ public class ScheduledTransaction {
 	private String account;
 	private String transaction_type;
 	private String frequency;
-	private LocalDate due_date;
+	private int due_date;
 	private double pay_amount;
 
-	public ScheduledTransaction(String name, String account, String transaction_type, String frequency, LocalDate due_date, double pay_amount) {
+	public ScheduledTransaction(String name, String account, String transaction_type, String frequency, int due_date, double pay_amount) {
 		this.name = name;
 		this.account = account;
 		this.transaction_type = transaction_type;
@@ -36,7 +35,7 @@ public class ScheduledTransaction {
 		return this.frequency;
 	}
 
-	public LocalDate getDueDate() {
+	public int getDueDate() {
 		return this.due_date;
 	}
 
@@ -60,7 +59,7 @@ public class ScheduledTransaction {
 		this.frequency = frequency;
 	}
 
-	public void setDueDate(LocalDate due_date) {
+	public void setDueDate(int due_date) {
 		this.due_date = due_date;
 	}
 
