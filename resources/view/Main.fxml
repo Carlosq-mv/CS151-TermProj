@@ -10,32 +10,32 @@
 
 <HBox fx:id="mainBox" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #1C0C4F;">
+      <AnchorPane prefHeight="768.0" prefWidth="195.0" style="-fx-background-color: #1C0C4F;">
          <children>
             <Button fx:id="homeBtn" layoutX="17.0" layoutY="35.0" mnemonicParsing="false" onAction="#goHomeOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Home">
                <font>
                   <Font name="Georgia" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="accountsBtn" layoutX="17.0" layoutY="106.0" mnemonicParsing="false" onAction="#goToAccountsOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Accounts">
+            <Button fx:id="accountsBtn" layoutX="18.0" layoutY="142.0" mnemonicParsing="false" onAction="#goToAccountsOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Accounts">
                <font>
                   <Font name="Georgia" size="17.0" />
                </font></Button>
-            <Button fx:id="transactionTypeBtn" layoutX="17.0" layoutY="225.0" mnemonicParsing="false" onAction="#goToTransactionsTypeOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Transactions Types">
+            <Button fx:id="transactionTypeBtn" layoutX="17.0" layoutY="359.0" mnemonicParsing="false" onAction="#goToTransactionsTypeOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Transactions Types">
                <font>
                   <Font name="Georgia" size="17.0" />
                </font></Button>
-            <Button fx:id="enterTransactionBtn" layoutX="17.0" layoutY="285.0" mnemonicParsing="false" onAction="#goToEnterTransactionOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Enter Transactions">
+            <Button fx:id="enterTransactionBtn" layoutX="16.0" layoutY="434.0" mnemonicParsing="false" onAction="#goToEnterTransactionOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="Enter Transactions">
                <font>
                   <Font name="Georgia" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="scheduledTransaction" layoutX="17.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToScheduledTransactionOp" prefHeight="32.0" prefWidth="170.0" styleClass="nav-button" text="Reccuring">
+            <Button fx:id="scheduledTransaction" layoutX="17.0" layoutY="504.0" mnemonicParsing="false" onAction="#goToScheduledTransactionOp" prefHeight="32.0" prefWidth="170.0" styleClass="nav-button" text="Reccuring">
                <font>
                   <Font name="Georgia" size="17.0" />
                </font>
             </Button>
-            <AnchorPane layoutX="2.0" layoutY="162.0" prefHeight="46.0" prefWidth="200.0">
+            <AnchorPane layoutX="1.0" layoutY="288.0" prefHeight="46.0" prefWidth="200.0">
                <children>
                   <Label layoutX="24.0" layoutY="7.0" text="Transactions" textFill="WHITE">
                      <font>
@@ -44,7 +44,18 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="viewScheduledTransaction" layoutX="16.0" layoutY="396.0" mnemonicParsing="false" onAction="#goToViewScheduledTransactionOp" prefHeight="32.0" prefWidth="170.0" styleClass="nav-button" text="View Reccuring">
+            <Button fx:id="viewScheduledTransaction" layoutX="16.0" layoutY="584.0" mnemonicParsing="false" onAction="#goToViewScheduledTransactionOp" prefHeight="32.0" prefWidth="170.0" styleClass="nav-button" text="View Reccuring">
+               <font>
+                  <Font name="Georgia" size="17.0" />
+               </font>
+            </Button>
+            <AnchorPane layoutX="11.0" layoutY="298.0" prefHeight="46.0" prefWidth="200.0" />
+            <Label layoutX="51.0" layoutY="95.0" text="Accounts" textFill="WHITE">
+               <font>
+                  <Font name="Georgia" size="26.0" />
+               </font>
+            </Label>
+            <Button fx:id="viewAccountsBtn" layoutX="18.0" layoutY="221.0" mnemonicParsing="false" onAction="#goToViewAccountsOp" prefHeight="30.0" prefWidth="170.0" styleClass="nav-button" text="View Accounts">
                <font>
                   <Font name="Georgia" size="17.0" />
                </font>

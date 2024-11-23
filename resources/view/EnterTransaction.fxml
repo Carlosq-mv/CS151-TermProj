@@ -15,7 +15,7 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <Label prefHeight="53.0" prefWidth="236.0" text="New Account" textFill="#f5f4f4">
+            <Label prefHeight="53.0" prefWidth="305.0" text="New Transaction" textFill="#f5f4f4">
                <font>
                   <Font name="Georgia" size="40.0" />
                </font>
