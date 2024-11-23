@@ -2,10 +2,10 @@ package application;
 
 public class Constants {
 	// database file with driver
-	public static final String DATABASE = "jdbc:sqlite:db/WalletWise.db";
+	public static final String DATABASE = "jdbc:sqlite:WalletWise.db";
 		
 	// SQL Table Creation Statements
-	public static final String SQL_ACC_TABLE = """ 
+	public static final String ACCOUNT_TABLE = """ 
 		CREATE TABLE IF NOT EXISTS Account (
 			ID INTEGER PRIMARY KEY AUTOINCREMENT,
 			name TEXT NOT NULL UNIQUE,
@@ -32,5 +32,17 @@ public class Constants {
 			pay_amount DECIMAL,
 			deposit_amount DECIMAL
 		);	
+	""";
+	
+	public static final String SCHEDULED_TRANSACTION_TABLE = """
+		CREATE TABLE IF NOT EXISTS ScheduledTransaction (
+			ID INTEGER PRIMARY KEY AUTOINCREMENT,
+			name TEXT NOT NULL,
+			account TEXT NOT NULL,
+			transaction_type TEXT NOT NULL,
+			frequency TEXT NOT NULL,
+			date INTEGER NOT NULL,
+			pay_amount DECIMAL NOT NULL
+		)
 	""";
 }
